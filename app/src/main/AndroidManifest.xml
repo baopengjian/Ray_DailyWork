@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".april.NestedScrollViewActivity"
+        <activity android:name=".april.ButtonShadowActivity"
             />
         <activity android:name=".april.PartiallyClickableActivity"/>
         <activity android:name=".april.AprilActivity"/>

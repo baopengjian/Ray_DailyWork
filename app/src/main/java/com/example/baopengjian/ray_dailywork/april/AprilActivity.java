@@ -13,8 +13,8 @@ import com.example.baopengjian.ray_dailywork.R;
 
 public class AprilActivity extends AppCompatActivity {
 
-    static Class[] TARGETS = {NestedScrollViewActivity.class,PartiallyClickableActivity.class};
-    static String[] TARGETS_DESC = {"NestedScrollView嵌套RecyclerView","TextView设置部分颜色+部分点击"};
+    static Class[] TARGETS = {ButtonShadowActivity.class,PartiallyClickableActivity.class};
+    static String[] TARGETS_DESC = {"按钮阴影效果","TextView设置部分颜色+部分点击"};
 
     private Context context;
 
