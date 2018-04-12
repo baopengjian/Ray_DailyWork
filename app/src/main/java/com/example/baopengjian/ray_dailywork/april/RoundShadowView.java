@@ -11,6 +11,12 @@ import android.view.View;
 
 /**
  * Created by Ray on 2018/4/9 .
+ * requirement 阴影圆角效果
+ * Core API：圆角  Canvas.drawRoundRect(@NonNull RectF rect, float rx, float ry, @NonNull Paint paint)
+ *                  rx、ry 圆角的x\y方向半径
+ *
+ *           阴影 Paint.setShadowLayer(float radius, float dx, float dy, int shadowColor)
+ *           radius阴影半径 dx 横向偏移 dy 纵向偏移
  */
 
 public class RoundShadowView extends View {
@@ -55,12 +61,13 @@ public class RoundShadowView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        mWidth = getWidth();
-        mHeight = getHeight();
+
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        mWidth = getWidth();
+        mHeight = getHeight();
         //左、上、右（右边到控件左边）、下（底部到控件顶部）
         RectF rectF = new RectF(mShadowRadius/2,0,mWidth - mShadowRadius/2,mHeight - mShadowRadius/4 -yOffset);
         canvas.drawRoundRect(rectF,mRoundRadius,mRoundRadius, mPaint);

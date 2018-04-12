@@ -8,6 +8,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
+import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -44,6 +45,10 @@ public class PartiallyClickableActivity extends AppCompatActivity {
         info.setSpan(new ForegroundColorSpan(Color.BLACK), 0, st1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         info.setSpan(new ForegroundColorSpan(Color.RED), st1.length(), (st1 + st2).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         info.setSpan(new Clickable(clickListener), st1.length(), (st1 + st2).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE | ~Spanned.SPAN_MARK_MARK);
+
+        //设置字体大小（绝对值,单位：像素）,第二个参数boolean dip，如果为true，表示前面的字体大小单位为dip，否则为像素
+        info.setSpan(new AbsoluteSizeSpan(14,true),0,st1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        info.setSpan(new AbsoluteSizeSpan(24,true),st1.length(),(st1 + st2).length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         //step4 TextView设置SpannableString
         tv.setText(info);
