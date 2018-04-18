@@ -8,6 +8,7 @@ import com.example.baopengjian.ray_dailywork.R;
 
 /**
  * Created by Ray on 2018/4/4 .
+ * 阴影圆角效果
  */
 
 public class ButtonShadowActivity extends AppCompatActivity {
