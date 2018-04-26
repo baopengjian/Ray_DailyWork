@@ -13,8 +13,8 @@ import com.example.baopengjian.ray_dailywork.R;
 
 public class AprilActivity extends AppCompatActivity {
 
-    static Class[] TARGETS = {ButtonShadowActivity.class,PartiallyClickableActivity.class,LoadPdfActivity.class};
-    static String[] TARGETS_DESC = {"按钮阴影效果","TextView设置部分颜色+部分点击","加载网络pdf文件"};
+    static Class[] TARGETS = {ButtonShadowActivity.class,PartiallyClickableActivity.class,LoadPdfActivity.class,ShadowsActivity.class};
+    static String[] TARGETS_DESC = {"按钮阴影效果","TextView设置部分颜色+部分点击","加载网络pdf文件","20180425阴影效果"};
 
     private Context context;
 

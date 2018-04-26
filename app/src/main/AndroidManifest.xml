@@ -26,6 +26,7 @@
         <activity android:name=".april.AprilActivity"/>
         <activity android:name=".april.LoadPdfActivity"/>
         <activity android:name=".april.DependsActivity"/>
+        <activity android:name=".april.ShadowsActivity"/>
     </application>
 
 </manifest>
