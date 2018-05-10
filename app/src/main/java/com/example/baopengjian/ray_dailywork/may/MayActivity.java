@@ -1,21 +1,26 @@
-package com.example.baopengjian.ray_dailywork;
+package com.example.baopengjian.ray_dailywork.may;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.baopengjian.ray_dailywork.april.AprilActivity;
-import com.example.baopengjian.ray_dailywork.may.MayActivity;
+import com.example.baopengjian.ray_dailywork.R;
 
-public class MainActivity extends AppCompatActivity {
 
-    static Class[] TARGETS = {AprilActivity.class,MayActivity.class};
-    static String[] TARGETS_DESC = {"AprilActivity","MayActivity"};
+/**
+ * Created by Ray on 2018/5/10.
+ *
+ */
+
+public class MayActivity extends AppCompatActivity {
+
+    static Class[] TARGETS = {ListHorizontalScrollActivity.class};
+    static String[] TARGETS_DESC = {"列表横滚"};
 
     private Context context;
 
@@ -23,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         context = this;
 
         ListView lv = (ListView) findViewById(R.id.lv);

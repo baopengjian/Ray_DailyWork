@@ -20,6 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 2018-5 -->
+        <activity android:name=".may.MayActivity"/>
+        <activity android:name=".may.ListHorizontalScrollActivity"/>
+
         <activity android:name=".april.ButtonShadowActivity"
             />
         <activity android:name=".april.PartiallyClickableActivity"/>
