@@ -7,7 +7,8 @@ import android.view.VelocityTracker;
 import android.widget.ListView;
 
 /**
- * Created by PF0ZYBAJ on 2018/5/10.
+ * Created by Ray on 2018/5/10.
+ * 获取手势：方向、速度、距离
  */
 
 public class HSListView extends ListView {

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.baopengjian.ray_dailywork.R;
 
 /**
- * Created by PF0ZYBAJ on 2018/5/10.
+ * Created by Ray on 2018/5/10.
  */
 
 public class HScrollAdapter extends BaseAdapter {

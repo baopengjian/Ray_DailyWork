@@ -7,7 +7,8 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 /**
- * Created by PF0ZYBAJ on 2018/5/10.
+ * Created by Ray on 2018/5/10.
+ * 横向滚动的表头和List 的item中可以滚动的组件
  */
 
 public class HScrollLayout extends LinearLayout {
