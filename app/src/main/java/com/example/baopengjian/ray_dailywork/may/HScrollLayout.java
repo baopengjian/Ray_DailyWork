@@ -30,9 +30,12 @@ public class HScrollLayout extends LinearLayout {
     public void computeScroll() {
         super.computeScroll();
         if (mScrollerCompat != null && mScrollerCompat.computeScrollOffset()) {
-            scrollTo(mScrollerCompat.getCurrX(),0);
+            scrollTo(mScrollerCompat.getCurrX(), 0);
             postInvalidate();
         }
+    }
 
+    public void setScroller(ScrollerCompat scroller) {
+        mScrollerCompat = scroller;
     }
 }

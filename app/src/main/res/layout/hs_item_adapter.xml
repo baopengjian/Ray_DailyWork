@@ -3,28 +3,34 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="44dp">
     <TextView
-        android:layout_width="80dp"
+        android:layout_width="@dimen/col_width"
         android:id="@+id/tv_title1"
         android:gravity="center"
         android:layout_height="match_parent" />
     <com.example.baopengjian.ray_dailywork.may.HScrollLayout
+        android:id="@+id/hsl"
         android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_height="match_parent">
         <TextView
             android:gravity="center"
             android:id="@+id/tv_title2"
-            android:layout_width="60dp"
+            android:layout_width="@dimen/item_width"
             android:layout_height="44dp" />
         <TextView
             android:id="@+id/tv_title3"
             android:gravity="center"
-            android:layout_width="60dp"
+            android:layout_width="@dimen/item_width"
             android:layout_height="44dp" />
         <TextView
             android:gravity="center"
             android:id="@+id/tv_title4"
-            android:layout_width="60dp"
+            android:layout_width="@dimen/item_width"
+            android:layout_height="44dp" />
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_title5"
+            android:layout_width="@dimen/item_width"
             android:layout_height="44dp" />
     </com.example.baopengjian.ray_dailywork.may.HScrollLayout>
 </LinearLayout>

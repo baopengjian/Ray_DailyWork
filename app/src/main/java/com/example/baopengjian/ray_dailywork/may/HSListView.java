@@ -74,7 +74,6 @@ public class HSListView extends ListView {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         createVelocityTracker(ev);
-        getParent().requestDisallowInterceptTouchEvent(true);
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 xDown = ev.getRawX();
@@ -105,11 +104,6 @@ public class HSListView extends ListView {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-//		if(isTouchHeaderOrFooter(ev)){
-//			getParent().requestDisallowInterceptTouchEvent(false);
-//			return super.onInterceptTouchEvent(ev);
-//		}
-        getParent().requestDisallowInterceptTouchEvent(true);
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 return super.onInterceptTouchEvent(ev);
@@ -134,11 +128,6 @@ public class HSListView extends ListView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-//		if(isTouchHeaderOrFooter(event)){
-//			getParent().requestDisallowInterceptTouchEvent(false);
-//			return super.onTouchEvent(event);
-//		}
-        getParent().requestDisallowInterceptTouchEvent(true);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 return super.onTouchEvent(event);
@@ -159,17 +148,7 @@ public class HSListView extends ListView {
                 if (mListener != null) {
                     mListener.onTouchUp(xUp, yUp);
                 }
-              /*  if (xDown < 0 ) {
-                    if (isSliding && xUp - xDown > 0) { //在名稱範圍內左向右滑
-                        if (mListener != null) {
-                            mListener.onOpenLeftMenu();
-                        }
-                    }
-                } else {
-                    if (xUp - xDown < 0 && mListener != null  && isSliding) {
-                        mListener.onCloseLeftMenu();
-                    }
-                }*/
+
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_OUTSIDE:
                 if (mListener != null && isSliding && xDown > 0 ) {
@@ -217,17 +196,13 @@ public class HSListView extends ListView {
 
     public  interface HScrollListViewListener {
 
+        void onTouchDown(float x, float y);
+
         void onSliding(int moveDistanceX);
 
         void onFling(int startX, int startY, int velocityX, int velocityY, int minX, int maxX, int minY, int maxY, int overX, int overY);
 
-        void onTouchDown(float x, float y);
-
         void onTouchUp(float x, float y);
-
-/*        void onOpenLeftMenu();
-
-        void onCloseLeftMenu();*/
 
     }
 }
