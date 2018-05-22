@@ -32,6 +32,7 @@
         <activity android:name=".april.LoadPdfActivity"/>
         <activity android:name=".april.DependsActivity"/>
         <activity android:name=".april.ShadowsActivity"/>
+        <activity android:name=".may.bar.BarChartViewActivity"/>
     </application>
 
 </manifest>
