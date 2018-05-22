@@ -7,6 +7,9 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.TextureView;
@@ -32,7 +35,7 @@ public class BarChartView extends View {
 
     public static int TEXT_MARGINING = 5;
 
-    public static int BOTTOM_TEXT_MARGINNG = 20;
+    public static int BOTTOM_TEXT_MARGINNG = 10;
 
     public static int[] BAR_COLORS = {R.color.bar_color_1,R.color.bar_color_2};
 
@@ -74,7 +77,7 @@ public class BarChartView extends View {
         mTextPaint = new Paint();
         mTextPaint.setColor(Color.GRAY);
         mTextPaint.setStrokeWidth(1);
-        mTextPaint.setTextSize(20);
+        mTextPaint.setTextSize(28);
         mTextColor = R.color.text_color;
         mTextPaint.setColor(getResources().getColor(mTextColor));
 
@@ -137,7 +140,7 @@ public class BarChartView extends View {
         Paint paint = new Paint();
         paint.setColor(Color.GRAY);
         paint.setStrokeWidth(mBarWidth);
-        paint.setTextSize(20);
+        paint.setTextSize(28);
 
         float maxY = getMaxY();
         float rateY = 0;
@@ -151,6 +154,7 @@ public class BarChartView extends View {
         int startY = mTopHeight,middleX;
         Bar bar;
         int maxDescLength = mBarWidth + mBarSpace/4;
+        textPaint = new TextPaint(mTextPaint);
         for (int i = 0; i < mBars.size(); i++) {
             bar = mBars.get(i);
 
@@ -175,8 +179,20 @@ public class BarChartView extends View {
     private void drawDesc(Canvas canvas, int middleX, String desc, int startY, int maxDescLength){
         Rect bound2 = new Rect();
         mTextPaint.getTextBounds(desc,0,desc.length(),bound2);
-        canvas.drawText(desc,middleX - bound2.width()/2,startY+BOTTOM_TEXT_MARGINNG+bound2.height(),mTextPaint);
+        if(bound2.width() < maxDescLength){
+            canvas.drawText(desc,middleX - bound2.width()/2,startY+BOTTOM_TEXT_MARGINNG+bound2.height(),mTextPaint);
+        }else{
+            int startX = middleX - mBarWidth/2 - mBarSpace/8;
+            startY += BOTTOM_TEXT_MARGINNG;
+            canvas.save();
+            canvas.translate(startX,startY);
+            StaticLayout layout = new StaticLayout(desc,textPaint,maxDescLength, Layout.Alignment.ALIGN_NORMAL,0.8F,0,false);
+            layout.draw(canvas);
+            canvas.restore();
+        }
     }
+
+    private TextPaint textPaint;
 
 
 

@@ -31,7 +31,12 @@ public class BarChartViewActivity extends AppCompatActivity {
         int[] color = new int[10];
         for(int i = 0;i < 10;i++){
             BarChartView.Bar  bar = new BarChartView.Bar();
-            bar.setDesc(i+"");
+            if( i <3){
+                bar.setDesc(i+""+"dfa");
+            }else{
+                bar.setDesc(i+""+"dfasefasefase");
+            }
+
             rad = random.nextInt(i+1)+3;
             bar.setData(rad+"");
             bar.setDataFloat(rad);
