@@ -23,11 +23,11 @@ import java.util.List;
 /**
  * Created by Ray on 2018/5/22.
  * 柱状图
- *  从上往下： 上部内容区 topHeight  + 底部标注区 bottomHeight
- *  从左往右：间宽*1/2 + 柱状图宽*count + 间宽*(count-1) + 间宽/2;
- *
- *  数据设置 柱状图List<Bar>  顶部标题（leftTitle + rightTitle）
- *  Bar(每个柱子 desc 描述 + data 数值)
+ * 从上往下： 上部内容区 topHeight  + 底部标注区 bottomHeight
+ * 从左往右：间宽*1/2 + 柱状图宽*count + 间宽*(count-1) + 间宽/2;
+ * <p>
+ * 数据设置 柱状图List<Bar>  顶部标题（leftTitle + rightTitle）
+ * Bar(每个柱子 desc 描述 + data 数值)
  */
 
 public class BarChartView extends View {
@@ -39,19 +39,21 @@ public class BarChartView extends View {
 
     public static int BOTTOM_TEXT_MARGINNG = 10;
 
-    public static int[] BAR_COLORS = {R.color.bar_color_1,R.color.bar_color_2};
+    public static int[] BAR_COLORS = {R.color.bar_color_1, R.color.bar_color_2};
 
 
-    private int mTopHeight,mButtomHeight,mTitlePadding;
-    private int mBarWidth,mBarSpace;
+    private int mTopHeight, mButtomHeight, mTitlePadding;
+    private int mBarWidth, mBarSpace;
 
-    /** 最高柱状图距离middleArea顶部值*/
+    /**
+     * 最高柱状图距离middleArea顶部值
+     */
     private int mPaddingTop;
-    private int mHeight,mWidth;
+    private int mHeight, mWidth;
 
     private int mLineWidth;
 
-    private String mLeftTitle,mRightTilte;
+    private String mLeftTitle, mRightTilte;
     private List<Bar> mBars;
     private int[] mBarColors;
 
@@ -63,12 +65,12 @@ public class BarChartView extends View {
 
 
     public BarChartView(Context context) {
-        this(context,null);
+        this(context, null);
 
     }
 
     public BarChartView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public BarChartView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -107,86 +109,66 @@ public class BarChartView extends View {
     private void initWeight() {
         mHeight = getHeight();
         mWidth = getWidth();
-        mButtomHeight = UtilsDensity.dp2px(getContext(),30);
+        mButtomHeight = UtilsDensity.dp2px(getContext(), 30);
         mTopHeight = mHeight - mButtomHeight;
-        mPaddingTop = UtilsDensity.dp2px(getContext(),30);
-        mTitlePadding =  UtilsDensity.dp2px(getContext(),5);
+        mPaddingTop = UtilsDensity.dp2px(getContext(), 30);
+        mTitlePadding = UtilsDensity.dp2px(getContext(), 5);
 
-        mBarWidth = mWidth / (2 * mBars.size());
-        mBarSpace = mBarWidth;
-        mBarPaint.setStrokeWidth(mBarWidth);
+
     }
 
     private void drawRightTitle(Canvas canvas) {
-        if(mRightTilte == null || TextUtils.isEmpty(mRightTilte)){
+        if (mRightTilte == null || TextUtils.isEmpty(mRightTilte)) {
             return;
         }
 
         Rect rect = new Rect();
-        mTextPaint.getTextBounds(mRightTilte,0,mRightTilte.length(),rect);
+        mTextPaint.getTextBounds(mRightTilte, 0, mRightTilte.length(), rect);
         int startX = mWidth - mTitlePadding - rect.width();
-        canvas.drawText(mRightTilte,startX,mTitlePadding+rect.height(),mTextPaint);
+        canvas.drawText(mRightTilte, startX, mTitlePadding + rect.height(), mTextPaint);
     }
 
 
     private void drawLeftTitle(Canvas canvas) {
-        if(mLeftTitle == null || TextUtils.isEmpty(mLeftTitle)){
+        if (mLeftTitle == null || TextUtils.isEmpty(mLeftTitle)) {
             return;
         }
         Rect rect = new Rect();
-        mTextPaint.getTextBounds(mLeftTitle,0,mLeftTitle.length(),rect);
-        canvas.drawText(mLeftTitle,mTitlePadding,mTitlePadding+rect.height(),mTextPaint);
+        mTextPaint.getTextBounds(mLeftTitle, 0, mLeftTitle.length(), rect);
+        canvas.drawText(mLeftTitle, mTitlePadding, mTitlePadding + rect.height(), mTextPaint);
     }
 
 
     private void getBarsData(Canvas canvas) {
+        if (mBars == null || mBars.size() == 0) {
+            return;
+        }
+
+        mBarWidth = mWidth / (2 * mBars.size());
+        mBarSpace = mBarWidth;
+        mBarPaint.setStrokeWidth(mBarWidth);
+
         float maxY = getMaxY();
         float rateY = 0;
-        if(maxY > 0){
-             rateY = (mTopHeight - mPaddingTop)/maxY;
+        if (maxY > 0) {
+            rateY = (mTopHeight - mPaddingTop) / maxY;
         }
-        int x;
-        float stopY;
-        int startY = mTopHeight,middleX;
-        Bar bar;
-        int maxDescLength = mBarWidth + mBarSpace/4;
+
+        int maxDescLength = mBarWidth + mBarSpace / 4;
         textPaint = new TextPaint(mTextPaint);
 
 
         long timeCurrent = System.currentTimeMillis();
-        if(timeCurrent - timeStart < TIME_ANIM){
-           /* for (int i = 0; i < mBars.size(); i++) {
-                bar = mBars.get(i);
-                x = mBarSpace/2 + (mBarWidth + mBarSpace)*i + mBarWidth/2;
+        if (timeCurrent - timeStart < TIME_ANIM) {
 
-                int color = getResources().getColor(mBarColors[i%mBarColors.length]);
-                mBarPaint.setColor(color);
-                canvas.drawLine(x,startY,x,stopY, mBarPaint);
-
-                middleX = mBarSpace/2 + (mBarWidth + mBarSpace)*i + mBarWidth/2;
-                drawHint(canvas,middleX,bar.getData(),stopY, mBarPaint);
-                drawDesc(canvas,middleX,bar.getDesc(),startY,maxDescLength);
-            }*/
-            drawBars(canvas,rateY,maxDescLength,false,timeCurrent);
+            drawBars(canvas, rateY, maxDescLength, false, timeCurrent);
             invalidate();
-        }else{
-           /* for (int i = 0; i < mBars.size(); i++) {
-                bar = mBars.get(i);
-                x = mBarSpace/2 + (mBarWidth + mBarSpace)*i + mBarWidth/2;
-                stopY = startY - bar.getDataFloat()*rateY;
-                int color = getResources().getColor(mBarColors[i%mBarColors.length]);
-                mBarPaint.setColor(color);
-                canvas.drawLine(x,startY,x,stopY, mBarPaint);
-
-                middleX = mBarSpace/2 + (mBarWidth + mBarSpace)*i + mBarWidth/2;
-                drawHint(canvas,middleX,bar.getData(),stopY, mBarPaint);
-                drawDesc(canvas,middleX,bar.getDesc(),startY,maxDescLength);
-            }*/
-           drawBars(canvas,rateY,maxDescLength,true,timeCurrent);
+        } else {
+            drawBars(canvas, rateY, maxDescLength, true, timeCurrent);
         }
     }
 
-    private void drawBars(Canvas canvas,float rateY,int maxDescLength,boolean isEnd,long timeCurrent){
+    private void drawBars(Canvas canvas, float rateY, int maxDescLength, boolean isEnd, long timeCurrent) {
         Bar bar;
 
         int x;
@@ -197,43 +179,42 @@ public class BarChartView extends View {
         for (int i = 0; i < mBars.size(); i++) {
             bar = mBars.get(i);
 
-            x = mBarSpace/2 + (mBarWidth + mBarSpace)*i + mBarWidth/2;
-            if(isEnd){
-                stopY = startY - bar.getDataFloat()*rateY;
-            }else{
-                stopY = startY  - ( bar.getDataFloat()*rateY*(timeCurrent - timeStart))/(float) (TIME_ANIM);
+            x = mBarSpace / 2 + (mBarWidth + mBarSpace) * i + mBarWidth / 2;
+            if (isEnd) {
+                stopY = startY - bar.getDataFloat() * rateY;
+            } else {
+                stopY = startY - (bar.getDataFloat() * rateY * (timeCurrent - timeStart)) / (float) (TIME_ANIM);
             }
 
-            int color = getResources().getColor(mBarColors[i%mBarColors.length]);
+            int color = getResources().getColor(mBarColors[i % mBarColors.length]);
             mBarPaint.setColor(color);
-            canvas.drawLine(x,startY,x,stopY, mBarPaint);
+            canvas.drawLine(x, startY, x, stopY, mBarPaint);
 
-            middleX = mBarSpace/2 + (mBarWidth + mBarSpace)*i + mBarWidth/2;
-            drawHint(canvas,middleX,bar.getData(),stopY, mBarPaint);
-            drawDesc(canvas,middleX,bar.getDesc(),startY,maxDescLength);
+            middleX = mBarSpace / 2 + (mBarWidth + mBarSpace) * i + mBarWidth / 2;
+            drawHint(canvas, middleX, bar.getData(), stopY, mBarPaint);
+            drawDesc(canvas, middleX, bar.getDesc(), startY, maxDescLength);
         }
     }
 
 
-
-    private void drawHint(Canvas canvas, int middleX, String data,float stopY, Paint paint) {
+    private void drawHint(Canvas canvas, int middleX, String data, float stopY, Paint paint) {
         Rect bound = new Rect();
-        mTextPaint.getTextBounds(data,0,data.length(),bound);
+        mTextPaint.getTextBounds(data, 0, data.length(), bound);
         int width = bound.width();
-        canvas.drawText(data,middleX- width/2,stopY-TEXT_MARGINING,paint);
+        canvas.drawText(data, middleX - width / 2, stopY - TEXT_MARGINING, paint);
     }
 
-    private void drawDesc(Canvas canvas, int middleX, String desc, int startY, int maxDescLength){
+    private void drawDesc(Canvas canvas, int middleX, String desc, int startY, int maxDescLength) {
         Rect bound2 = new Rect();
-        mTextPaint.getTextBounds(desc,0,desc.length(),bound2);
-        if(bound2.width() < maxDescLength){
-            canvas.drawText(desc,middleX - bound2.width()/2,startY+BOTTOM_TEXT_MARGINNG+bound2.height(),mTextPaint);
-        }else{
-            int startX = middleX - mBarWidth/2 - mBarSpace/8;
+        mTextPaint.getTextBounds(desc, 0, desc.length(), bound2);
+        if (bound2.width() < maxDescLength) {
+            canvas.drawText(desc, middleX - bound2.width() / 2, startY + BOTTOM_TEXT_MARGINNG + bound2.height(), mTextPaint);
+        } else {
+            int startX = middleX - mBarWidth / 2 - mBarSpace / 8;
             startY += BOTTOM_TEXT_MARGINNG;
             canvas.save();
-            canvas.translate(startX,startY);
-            StaticLayout layout = new StaticLayout(desc,textPaint,maxDescLength, Layout.Alignment.ALIGN_NORMAL,0.8F,0,false);
+            canvas.translate(startX, startY);
+            StaticLayout layout = new StaticLayout(desc, textPaint, maxDescLength, Layout.Alignment.ALIGN_NORMAL, 0.8F, 0, false);
             layout.draw(canvas);
             canvas.restore();
         }
@@ -241,8 +222,8 @@ public class BarChartView extends View {
 
     private TextPaint textPaint;
 
-    private void clear(){
-        if(mBars != null){
+    private void clear() {
+        if (mBars != null) {
             mBars.clear();
         }
         invalidate();
@@ -255,66 +236,64 @@ public class BarChartView extends View {
         paint.setColor(Color.GRAY);
 
         int horizontalLineNumber = 5;
-        int horizontalSpace = mTopHeight/(horizontalLineNumber - 1);
-        float[] dash = new float[]{1,5};
-        paint.setStyle ( Paint.Style.STROKE ) ;
-        paint.setPathEffect(new DashPathEffect(dash,0));
-        for(int i = 1;i < horizontalLineNumber;i++){
-            drawHorizontalLine(canvas,paint,horizontalSpace,i,horizontalLineNumber -1);
+        int horizontalSpace = mTopHeight / (horizontalLineNumber - 1);
+        float[] dash = new float[]{1, 5};
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setPathEffect(new DashPathEffect(dash, 0));
+        for (int i = 1; i < horizontalLineNumber; i++) {
+            drawHorizontalLine(canvas, paint, horizontalSpace, i, horizontalLineNumber - 1);
         }
     }
 
 
-
-
-    private void drawHorizontalLine(Canvas canvas, Paint paint, int horizontalSpace, int index, int maxIndex){
+    private void drawHorizontalLine(Canvas canvas, Paint paint, int horizontalSpace, int index, int maxIndex) {
         int startX = 0;
         int stopX = mWidth;
 
         int Y;
-        if(index == 0){
+        if (index == 0) {
             Y = 0;
-        }else if(index == maxIndex){
+        } else if (index == maxIndex) {
             Y = mTopHeight;
-        }else {
-            Y = horizontalSpace*index;
+        } else {
+            Y = horizontalSpace * index;
         }
-        canvas.drawLine(startX,Y,stopX,Y,paint);
+        canvas.drawLine(startX, Y, stopX, Y, paint);
     }
 
     public float getMaxY() {
         float max = mBars.get(0).getDataFloat();
-        for(Bar bar:mBars){
-            if(bar.getDataFloat() > max){
+        for (Bar bar : mBars) {
+            if (bar.getDataFloat() > max) {
                 max = bar.getDataFloat();
             }
         }
         return max;
     }
 
-    public void setBarColors(int[] colors){
-        if(colors == null || colors.length == 0){
+    public void setBarColors(int[] colors) {
+        if (colors == null || colors.length == 0) {
             return;
         }
         mBarColors = colors;
     }
 
-    public void setBars(List<Bar> list){
+    public void setBars(List<Bar> list) {
 
-        if(list == null || list.isEmpty()){
+        if (list == null || list.isEmpty()) {
             return;
         }
         clear();
 
-        try{
-            if(list.get(0).getDataFloat()< 0){
-                for(Bar bar:list){
-                    if(bar.getData() != null && !TextUtils.isEmpty(bar.getData())){
+        try {
+            if (list.get(0).getDataFloat() < 0) {
+                for (Bar bar : list) {
+                    if (bar.getData() != null && !TextUtils.isEmpty(bar.getData())) {
                         bar.setDataFloat(Float.parseFloat(bar.getData()));
                     }
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         mBars = list;
@@ -322,7 +301,7 @@ public class BarChartView extends View {
         postInvalidate();
     }
 
-    public void setTitles(String leftTitle,String rightTitle){
+    public void setTitles(String leftTitle, String rightTitle) {
         mLeftTitle = leftTitle;
         mRightTilte = rightTitle;
         postInvalidate();
