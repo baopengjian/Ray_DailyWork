@@ -26,23 +26,33 @@ import java.util.List;
  * 从上往下： 上部内容区 topHeight  + 底部标注区 bottomHeight
  * 从左往右：间宽*1/2 + 柱状图宽*count + 间宽*(count-1) + 间宽/2;
  * <p>
+ *
  * 数据设置 柱状图List<Bar>  顶部标题（leftTitle + rightTitle）
- * Bar(每个柱子 desc 描述 + data 数值)
+ *          Bar(每个柱子 desc 描述 + data 数值)
  */
 
 public class BarChartView extends View {
 
     private static int TIME_ANIM = 1000;
 
-
+    /**
+     * 柱顶文字和柱状图的距离
+     */
     public static int TEXT_MARGINING = 5;
 
+    /**
+     * 柱底说明文字到柱底的距离
+     */
     public static int BOTTOM_TEXT_MARGINNG = 10;
 
+    /**
+     * z柱状图默认颜色，以%的方式依次显示
+     */
     public static int[] BAR_COLORS = {R.color.bar_color_1, R.color.bar_color_2};
 
 
     private int mTopHeight, mButtomHeight, mTitlePadding;
+    /** 柱子的宽度和间距*/
     private int mBarWidth, mBarSpace;
 
     /**
@@ -60,7 +70,7 @@ public class BarChartView extends View {
     private Paint mTextPaint;
     private Paint mBarPaint;
     private int mTextColor;
-
+    /** 开始时间戳*/
     private long timeStart;
 
 

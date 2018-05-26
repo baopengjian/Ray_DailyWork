@@ -33,6 +33,8 @@
         <activity android:name=".april.DependsActivity"/>
         <activity android:name=".april.ShadowsActivity"/>
         <activity android:name=".may.bar.BarChartViewActivity"/>
+        <activity android:name=".may.fragment.FragmentExchangeActivity"/>
+        <activity android:name=".may.fragment.OtherActivity"/>
     </application>
 
 </manifest>

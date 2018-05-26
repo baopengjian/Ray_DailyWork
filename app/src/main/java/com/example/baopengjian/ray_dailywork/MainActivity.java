@@ -11,11 +11,12 @@ import android.widget.ListView;
 
 import com.example.baopengjian.ray_dailywork.april.AprilActivity;
 import com.example.baopengjian.ray_dailywork.may.MayActivity;
+import com.example.baopengjian.ray_dailywork.may.fragment.FragmentExchangeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     static Class[] TARGETS = {AprilActivity.class,MayActivity.class};
-    static String[] TARGETS_DESC = {"AprilActivity","MayActivity"};
+    static String[] TARGETS_DESC = {"April(自定义阴影、文本部分点击、pdf、新特性阴影)","May（列表横滚、柱状图、fragment显示）"};
 
     private Context context;
 
@@ -35,4 +36,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void nonstop(View view){
+        startActivity(new Intent(MainActivity.this, FragmentExchangeActivity.class));
+    }
+
 }

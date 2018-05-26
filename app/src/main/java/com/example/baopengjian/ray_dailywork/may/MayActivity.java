@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.example.baopengjian.ray_dailywork.R;
 import com.example.baopengjian.ray_dailywork.may.bar.BarChartViewActivity;
+import com.example.baopengjian.ray_dailywork.may.fragment.FragmentExchangeActivity;
 
 
 /**
@@ -20,8 +21,8 @@ import com.example.baopengjian.ray_dailywork.may.bar.BarChartViewActivity;
 
 public class MayActivity extends AppCompatActivity {
 
-    static Class[] TARGETS = {ListHorizontalScrollActivity.class,BarChartViewActivity.class};
-    static String[] TARGETS_DESC = {"列表横滚","柱状图"};
+    static Class[] TARGETS = {ListHorizontalScrollActivity.class,BarChartViewActivity.class, FragmentExchangeActivity.class};
+    static String[] TARGETS_DESC = {"列表横滚","柱状图","viewPager加载fragment懒加载及取消"};
 
     private Context context;
 
