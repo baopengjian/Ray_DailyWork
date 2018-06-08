@@ -35,6 +35,8 @@
         <activity android:name=".may.bar.BarChartViewActivity"/>
         <activity android:name=".may.fragment.FragmentExchangeActivity"/>
         <activity android:name=".may.fragment.OtherActivity"/>
+        <activity android:name=".june.JuneActivity"/>
+        <activity android:name=".june.SwitchButtonActivity"/>
     </application>
 
 </manifest>

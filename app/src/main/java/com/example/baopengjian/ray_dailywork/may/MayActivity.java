@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.baopengjian.ray_dailywork.MainActivity;
 import com.example.baopengjian.ray_dailywork.R;
 import com.example.baopengjian.ray_dailywork.may.bar.BarChartViewActivity;
 import com.example.baopengjian.ray_dailywork.may.fragment.FragmentExchangeActivity;
@@ -30,7 +31,7 @@ public class MayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        context = this;
+
 
         ListView lv = (ListView) findViewById(R.id.lv);
         lv.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_list_item_1,TARGETS_DESC));
@@ -40,5 +41,9 @@ public class MayActivity extends AppCompatActivity {
                 startActivity(new Intent(context, TARGETS[position]));
             }
         });
+    }
+
+    public void nonstop(View view){
+
     }
 }

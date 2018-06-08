@@ -1,4 +1,4 @@
-package com.example.baopengjian.ray_dailywork.april;
+package com.example.baopengjian.ray_dailywork.june;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,10 +11,14 @@ import android.widget.ListView;
 
 import com.example.baopengjian.ray_dailywork.R;
 
-public class AprilActivity extends AppCompatActivity {
 
-    static Class[] TARGETS = {ButtonShadowActivity.class,PartiallyClickableActivity.class,LoadPdfActivity.class,ShadowsActivity.class};
-    static String[] TARGETS_DESC = {"按钮阴影效果","TextView设置部分颜色+部分点击","加载网络pdf文件","20180425阴影效果"};
+/**
+ * Created by Ray on 2018/6/8.
+ */
+public class JuneActivity extends AppCompatActivity {
+
+    static Class[] TARGETS = {SwitchButtonActivity.class};
+    static String[] TARGETS_DESC = {"切换按钮"};
 
     private Context context;
 

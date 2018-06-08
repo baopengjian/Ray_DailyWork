@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.example.baopengjian.ray_dailywork.june.SwitchButton
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/sb"
+        android:layout_width="54dp"
+        android:layout_height="35dp"
+        app:sb_uncheck_color="#E5E5E5"
+        app:sb_text_on="开"
+        app:sb_text_on_color="#398BFB"
+        app:sb_checked_color="#398BFB"
+        app:sb_show_indicator="false"
+        app:sb_checked="true"/>
+</RelativeLayout>
