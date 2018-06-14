@@ -17,24 +17,22 @@ import com.example.baopengjian.ray_dailywork.may.fragment.FragmentExchangeActivi
 
 /**
  * Created by Ray on 2018/5/10.
- *
  */
 
 public class MayActivity extends AppCompatActivity {
 
-    static Class[] TARGETS = {ListHorizontalScrollActivity.class,BarChartViewActivity.class, FragmentExchangeActivity.class};
-    static String[] TARGETS_DESC = {"列表横滚","柱状图","viewPager加载fragment懒加载及取消"};
+    static Class[] TARGETS = {ListHorizontalScrollActivity.class, BarChartViewActivity.class, FragmentExchangeActivity.class};
+    static String[] TARGETS_DESC = {"列表横滚", "柱状图", "viewPager加载fragment懒加载及取消"};
 
     private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
+        setContentView(R.layout.activity_mouth);
+        context = this;
         ListView lv = (ListView) findViewById(R.id.lv);
-        lv.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_list_item_1,TARGETS_DESC));
+        lv.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, TARGETS_DESC));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -43,7 +41,7 @@ public class MayActivity extends AppCompatActivity {
         });
     }
 
-    public void nonstop(View view){
+    public void nonstop(View view) {
 
     }
 }

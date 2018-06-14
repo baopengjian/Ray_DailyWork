@@ -25,7 +25,7 @@ public class JuneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mouth);
         context = this;
 
         ListView lv = (ListView) findViewById(R.id.lv);
@@ -38,7 +38,4 @@ public class JuneActivity extends AppCompatActivity {
         });
     }
 
-    public void nonstop(View view){
-
-    }
 }
