@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="TextImageView">
+        <attr name="image_order" format="enum" >
+            <enum name="start" value="0"/>
+            <enum name="end" value="1"/>
+        </attr>
+        <attr name="image_src" format="reference" />
+        <attr name="image_height" format="dimension" />
+        <attr name="image_width" format="dimension" />
+        <attr name="text" format="string" />
+        <attr name="text_height" format="dimension" />
+        <attr name="text_width" format="dimension" />
+        <attr name="text_size" format="dimension|reference" />
+        <attr name="text_color" format="reference|color" />
+        <attr name="content_margin" format="dimension" />
+    </declare-styleable>
+
     <declare-styleable name="SwitchButton">
         <attr name="sb_shadow_radius" format="reference|dimension" />
         <attr name="sb_shadow_offset" format="reference|dimension" />

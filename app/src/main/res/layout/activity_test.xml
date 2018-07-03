@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.example.baopengjian.ray_dailywork.june.TextImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tiv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:content_margin="8dp"
+        app:image_order="start"
+        app:image_src="@drawable/selector"
+        app:text="我的持仓"
+        app:text_color="@color/text_color"
+        app:text_size="16dp" />
+</LinearLayout>

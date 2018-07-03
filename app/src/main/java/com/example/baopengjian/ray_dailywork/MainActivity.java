@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void nonstop(View view){
-        startActivity(new Intent(MainActivity.this, FragmentExchangeActivity.class));
+        startActivity(new Intent(MainActivity.this, TestActivity.class));
     }
 
 }
