@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.baopengjian.ray_dailywork.R;
+import com.example.baopengjian.ray_dailywork.util.UtilsDensity;
 
 /**
  * Created by Ray on 2018/5/10.

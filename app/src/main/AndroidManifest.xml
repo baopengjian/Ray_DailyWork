@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,22 +23,23 @@
         </activity>
 
         <!-- 2018-5 -->
-        <activity android:name=".may.MayActivity"/>
-        <activity android:name=".may.ListHorizontalScrollActivity"/>
+        <activity android:name=".may.MayActivity" />
+        <activity android:name=".may.ListHorizontalScrollActivity" />
 
-        <activity android:name=".april.ButtonShadowActivity"
-            />
-        <activity android:name=".april.PartiallyClickableActivity"/>
-        <activity android:name=".april.AprilActivity"/>
-        <activity android:name=".april.LoadPdfActivity"/>
-        <activity android:name=".april.DependsActivity"/>
-        <activity android:name=".april.ShadowsActivity"/>
-        <activity android:name=".may.bar.BarChartViewActivity"/>
-        <activity android:name=".may.fragment.FragmentExchangeActivity"/>
-        <activity android:name=".may.fragment.OtherActivity"/>
-        <activity android:name=".june.JuneActivity"/>
-        <activity android:name=".june.SwitchButtonActivity"/>
-        <activity android:name=".TestActivity"/>
+        <activity android:name=".april.ButtonShadowActivity" />
+        <activity android:name=".april.PartiallyClickableActivity" />
+        <activity android:name=".april.AprilActivity" />
+        <activity android:name=".april.LoadPdfActivity" />
+        <activity android:name=".april.DependsActivity" />
+        <activity android:name=".april.ShadowsActivity" />
+        <activity android:name=".may.bar.BarChartViewActivity" />
+        <activity android:name=".may.fragment.FragmentExchangeActivity" />
+        <activity android:name=".may.fragment.OtherActivity" />
+        <activity android:name=".june.JuneActivity" />
+        <activity android:name=".june.SwitchButtonActivity" />
+        <activity android:name=".TestActivity" />
+        <activity android:name=".fifth.DynamicPermissionRequestActivity" />
+        <activity android:name=".september.SeptemberActivity" />
     </application>
 
 </manifest>

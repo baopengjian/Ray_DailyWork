@@ -15,7 +15,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.example.baopengjian.ray_dailywork.R;
-import com.example.baopengjian.ray_dailywork.may.UtilsDensity;
+import com.example.baopengjian.ray_dailywork.util.UtilsDensity;
 
 import java.io.Serializable;
 import java.util.List;
