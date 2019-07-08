@@ -8,7 +8,7 @@
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></RelativeLayout>
-    <com.example.baopengjian.ray_dailywork.may.HSListView
+    <com.example.baopengjian.ray_dailywork.second.HSListView
         android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

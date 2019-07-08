@@ -4,7 +4,7 @@
     android:gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.example.baopengjian.ray_dailywork.june.TextImageView
+    <com.example.baopengjian.ray_dailywork.third.TextImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/tiv"
         android:layout_width="80dp"
