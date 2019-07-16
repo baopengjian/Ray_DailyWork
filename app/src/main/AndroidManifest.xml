@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".seventh.SelectedViewActivity"/>
         <!-- 2018-5 -->
         <activity android:name=".sixth.CalendarActivity"/>
         <activity android:name=".second.MayActivity" />
