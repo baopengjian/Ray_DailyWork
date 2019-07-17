@@ -43,13 +43,17 @@ public class SelectedView extends LinearLayout {
         setGravity(Gravity.CENTER);
         setBackgroundColor(Color.GREEN);
         mSelectedExpand = UtilsDensity.dip2px(3);
-        mSelectedShader =  UtilsDensity.dip2px(3);
+        mSelectedShader = UtilsDensity.dip2px(3);
         mItemWidth = UtilsDensity.dip2px(60);
-        mHeight =  UtilsDensity.dip2px(72);
-        mWidth =UtilsDensity.getScreenWidth(getContext());
 
     }
 
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        mHeight = getHeight();
+        mWidth = getWidth();
+    }
 
     public void setItems(final List<Item> list) {
 
@@ -67,24 +71,24 @@ public class SelectedView extends LinearLayout {
                 @Override
                 public void onClick(View v) {
                     int pos = (int) v.getTag();
-                    int  itemW;
+                    int itemW;
                     View child;
-                    if(switchSelected(pos)){
-                        for(int j = 0;j<mList.size();j++){
-                            itemW = list.get(j).isSlected ?( mItemWidth+2*mSelectedExpand+2*mSelectedShader): mItemWidth;
+                    if (switchSelected(pos)) {
+                        for (int j = 0; j < mList.size(); j++) {
+                            itemW = list.get(j).isSlected ? (mItemWidth + 2 * mSelectedExpand + 2 * mSelectedShader) : mItemWidth;
                             child = getChildAt(j);
                             LinearLayout.LayoutParams params = (LayoutParams) child.getLayoutParams();
                             params.width = itemW;
                             params.height = itemW;
                             params.rightMargin = 0;
                             params.leftMargin = 0;
-                            int padding = mSelectedExpand+mSelectedShader;
-                            if(j  !=mSeleted){
-                                if(j  == 0){
+                            int padding = mSelectedExpand + mSelectedShader;
+                            if (j != mSeleted) {
+                                if (j == 0) {
                                     params.rightMargin = padding;
-                                }else if(j  == list.size()-1){
+                                } else if (j == list.size() - 1) {
                                     params.leftMargin = padding;
-                                }else{
+                                } else {
                                     params.rightMargin = padding;
                                     params.leftMargin = padding;
                                 }
@@ -97,7 +101,6 @@ public class SelectedView extends LinearLayout {
             });
         }
     }
-
 
 
     private boolean switchSelected(int pos) {
@@ -123,27 +126,27 @@ public class SelectedView extends LinearLayout {
 
     private void getView(List<Item> list) {
 
-            int  itemW;
-            for (int i = 0; i < list.size(); i++) {
-                View itemView = getItemView();
-                if (list.get(i).isSlected) {
-                    mSeleted = i;
-                }
-                itemW = list.get(i).isSlected ? (mItemWidth + 2 * mSelectedExpand+2*mSelectedShader) : mItemWidth;
-                LayoutParams params = new LayoutParams(itemW, itemW);
-                int padding = mSelectedExpand+mSelectedShader;
-                if(i !=mSeleted){
-                   if(i == 0){
-                       params.rightMargin = padding;
-                   }else if(i == list.size()-1){
-                       params.leftMargin = padding;
-                   }else{
-                       params.rightMargin = padding;
-                       params.leftMargin = padding;
-                   }
-                }
-                addView(itemView, params);
+        int itemW;
+        for (int i = 0; i < list.size(); i++) {
+            View itemView = getItemView();
+            if (list.get(i).isSlected) {
+                mSeleted = i;
             }
+            itemW = list.get(i).isSlected ? (mItemWidth + 2 * mSelectedExpand + 2 * mSelectedShader) : mItemWidth;
+            LayoutParams params = new LayoutParams(itemW, itemW);
+            int padding = mSelectedExpand + mSelectedShader;
+            if (i != mSeleted) {
+                if (i == 0) {
+                    params.rightMargin = padding;
+                } else if (i == list.size() - 1) {
+                    params.leftMargin = padding;
+                } else {
+                    params.rightMargin = padding;
+                    params.leftMargin = padding;
+                }
+            }
+            addView(itemView, params);
+        }
 
 
     }
