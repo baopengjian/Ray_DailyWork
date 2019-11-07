@@ -18,7 +18,9 @@ import java.util.TimeZone;
 
 /**
  * Created by Ray on 2019-7-8.
+ * 使用CalendarUtil
  */
+@Deprecated
 public class CalendarReminderUtils {
 
     private static String CALENDER_URL = "content://com.android.calendar/calendars";

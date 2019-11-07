@@ -1,8 +1,14 @@
 package com.example.baopengjian.ray_dailywork.sixth;
 
 import android.Manifest;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -10,6 +16,7 @@ import android.widget.ListView;
 import com.example.baopengjian.ray_dailywork.R;
 import com.example.baopengjian.ray_dailywork.fifth.PermissionActivity;
 import com.example.baopengjian.ray_dailywork.util.AppUtils;
+import com.example.baopengjian.ray_dailywork.util.DBHelper;
 
 import java.util.Calendar;
 import java.util.List;
@@ -31,6 +38,11 @@ public class CalendarActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_activity);
         checkPermission();
+
+        SharedPreferences sharedPreferences =  getSharedPreferences("aa", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString("aaasefa","111" ).commit();
+      String path =  getFilesDir().getAbsolutePath();
+        Log.i("Cal","path =="+path );
     }
 
     private boolean checkPermission() {
@@ -43,9 +55,19 @@ public class CalendarActivity extends FragmentActivity {
         }
     }
 
+    int i = 0;
+
     public void add(View v) {
+        SQLiteDatabase database = DBHelper.getInstance(getApplicationContext()).getWritableDatabase();
+        ContentValues local = new ContentValues();
+        local.put(CalendarContract.Reminders.EVENT_ID, ++i);
+        local.put(CalendarContract.Reminders.TITLE, "标题" + i);
+
+
+        long insert = database.insert(DBHelper.TABLENAME5, null, local);
         Calendar calendar = Calendar.getInstance();
         CalendarReminderUtils.addCalendarEvent(this, "标题" + x, "到期提醒" + x, calendar.getTimeInMillis(), 0);
+
         x++;
     }
 
