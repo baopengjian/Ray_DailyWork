@@ -13,6 +13,7 @@ import com.example.baopengjian.ray_dailywork.eighth.ShrinkViewpagerActivity;
 import com.example.baopengjian.ray_dailywork.fifth.DynamicPermissionRequestActivity;
 import com.example.baopengjian.ray_dailywork.first.AprilActivity;
 import com.example.baopengjian.ray_dailywork.fourth.SeptemberActivity;
+import com.example.baopengjian.ray_dailywork.nineth.StringPickerActivity;
 import com.example.baopengjian.ray_dailywork.second.MayActivity;
 import com.example.baopengjian.ray_dailywork.seventh.SelectedViewActivity;
 import com.example.baopengjian.ray_dailywork.sixth.CalendarActivity;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void nonstop(View view) {
-        startActivity(new Intent(MainActivity.this, ShrinkViewpagerActivity.class));
+        startActivity(new Intent(MainActivity.this, StringPickerActivity.class));
     }
 
 }

@@ -45,6 +45,7 @@
         <activity android:name=".TestActivity" />
         <activity android:name=".fifth.DynamicPermissionRequestActivity" />
         <activity android:name=".fourth.SeptemberActivity" />
+        <activity android:name=".nineth.StringPickerActivity"/>
     </application>
 
 </manifest>
