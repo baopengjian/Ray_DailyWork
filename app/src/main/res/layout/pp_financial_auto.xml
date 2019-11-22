@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:background="#ffffff"
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="44dp">
@@ -22,6 +21,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/tv_submit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
@@ -32,7 +32,11 @@
             android:textColor="#FF007AFF"
             android:textSize="15sp" />
     </RelativeLayout>
-
+<View
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:background="#ADB0A7"
+    />
 
     <LinearLayout
         android:layout_marginBottom="30dp"
