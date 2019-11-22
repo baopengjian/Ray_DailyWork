@@ -39,12 +39,12 @@ public class AutomaticPp {
         tp1 = pop.findViewById(R.id.tp1);
         tp1.setDisplayedValues(TAB1);
         tp1.setMaxValue(TAB1.length - 1);
-        tp1.setFormatter(new NumberPicker.Formatter() {
+       /* tp1.setFormatter(new NumberPicker.Formatter() {
             @Override
             public String format(int i) {
                 return TAB1[i];
             }
-        });
+        });*/
         initPicker(tp1, 0);
         tp2 = pop.findViewById(R.id.tp2);
         tp2.setMaxValue(MONTH_MAX);
