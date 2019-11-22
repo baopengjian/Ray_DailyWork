@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,10 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".eighth.ShrinkViewpagerActivity"/>
-        <activity android:name=".seventh.SelectedViewActivity"/>
+        <activity android:name=".eighth.ShrinkViewpagerActivity" />
+        <activity android:name=".seventh.SelectedViewActivity" />
         <!-- 2018-5 -->
-        <activity android:name=".sixth.CalendarActivity"/>
+        <activity android:name=".sixth.CalendarActivity" />
         <activity android:name=".second.MayActivity" />
         <activity android:name=".second.ListHorizontalScrollActivity" />
 
@@ -45,7 +46,12 @@
         <activity android:name=".TestActivity" />
         <activity android:name=".fifth.DynamicPermissionRequestActivity" />
         <activity android:name=".fourth.SeptemberActivity" />
-        <activity android:name=".nineth.StringPickerActivity"/>
+        <activity
+            android:name=".nineth.StringPickerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.picker"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

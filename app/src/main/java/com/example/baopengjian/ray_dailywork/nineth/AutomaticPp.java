@@ -26,9 +26,15 @@ public class AutomaticPp {
 
     public static final String[] TAB1 = {"每月", "每周", "每双周"};
     public static final String[] TAB_WEEK = {"周一", "周二", "周三", "周四", "周五"};
+    public final String[] TAB_MOTH;
     public static final int MONTH_MAX = 28;
 
     public AutomaticPp(final Context context) {
+        TAB_MOTH = new String[MONTH_MAX];
+        for (int i = 0; i < MONTH_MAX; i++) {
+            TAB_MOTH[i] = (i + 1) + "日";
+        }
+
         View pop = View.inflate(context, R.layout.pp_financial_auto, null);
         popupWindow = new PopupWindow(pop, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setTouchable(true);
@@ -39,28 +45,24 @@ public class AutomaticPp {
         tp1 = pop.findViewById(R.id.tp1);
         tp1.setDisplayedValues(TAB1);
         tp1.setMaxValue(TAB1.length - 1);
-        tp1.setFormatter(new NumberPicker.Formatter() {
-            @Override
-            public String format(int i) {
-                return TAB1[i];
-            }
-        });
         initPicker(tp1, 0);
+
+
+
         tp2 = pop.findViewById(R.id.tp2);
-        tp2.setMaxValue(MONTH_MAX);
-        initPicker(tp2, 1);
+        tp2.setDisplayedValues(TAB_MOTH);
+        tp2.setMaxValue(TAB_MOTH.length - 1);
+        initPicker(tp2, 0);
 
 
         tp1.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 if (newVal == 0) {
-                    tp2.setMinValue(1);
-                    tp2.setMaxValue(28);
-                    tp2.setDisplayedValues(null);
-                    tp2.setValue(1);
+                    tp2.setDisplayedValues(TAB_MOTH);
+                    tp2.setMaxValue(TAB_MOTH.length - 1);
+                    tp2.setValue(0);
                 } else {
-                    tp2.setMinValue(0);
                     tp2.setMaxValue(TAB_WEEK.length - 1);
                     tp2.setDisplayedValues(TAB_WEEK);
                     if (oldVal == 0) {
