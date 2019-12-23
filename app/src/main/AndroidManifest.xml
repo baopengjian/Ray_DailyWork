@@ -11,6 +11,9 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
+    <meta-data
+        android:name="action"
+        android:value="com.example.bpj.dailwork" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,36 +28,93 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".eighth.ShrinkViewpagerActivity" />
-        <activity android:name=".seventh.SelectedViewActivity" />
+        <activity
+            android:name=".eighth.ShrinkViewpagerActivity"
+            android:label="08 ViewPager显示前后两项部分内容">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".seventh.SelectedViewActivity"
+            android:label="07 选中">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
         <!-- 2018-5 -->
-        <activity android:name=".sixth.CalendarActivity" />
-        <activity android:name=".second.MayActivity" />
+        <activity
+            android:name=".sixth.CalendarActivity"
+            android:label="06日历添删查">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".second.MayActivity"
+            android:label="02_列表横滚、柱状图、viewPagerLazyFragment">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
         <activity android:name=".second.ListHorizontalScrollActivity" />
 
         <activity android:name=".first.ButtonShadowActivity" />
         <activity android:name=".first.PartiallyClickableActivity" />
-        <activity android:name=".first.AprilActivity" />
+        <activity
+            android:name=".first.AprilActivity"
+            android:label="01自定义阴影、文本部分点击、pdf、新特性阴影">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
         <activity android:name=".first.LoadPdfActivity" />
         <activity android:name=".first.DependsActivity" />
         <activity android:name=".first.ShadowsActivity" />
         <activity android:name=".second.bar.BarChartViewActivity" />
         <activity android:name=".second.fragment.FragmentExchangeActivity" />
         <activity android:name=".second.fragment.OtherActivity" />
-        <activity android:name=".third.JuneActivity" />
+        <activity
+            android:name=".third.JuneActivity"
+            android:label="03按钮切换">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
         <activity android:name=".third.SwitchButtonActivity" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".fifth.DynamicPermissionRequestActivity" />
-        <activity android:name=".fourth.SeptemberActivity" />
+        <activity
+            android:name=".fifth.DynamicPermissionRequestActivity"
+            android:label="05动态权限申请">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".fourth.SeptemberActivity"
+            android:label="04 Bundle传输数据过大">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".nineth.StringPickerActivity"
             android:exported="false"
+            android:label="09 String选择器"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.picker"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".tenth.LoadingDialogActivity"
-
-            />
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tenth.LoadingDialogActivity"
+            android:label="10 加载Dialog的两种实现方式">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

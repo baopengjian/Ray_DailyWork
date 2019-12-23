@@ -2,30 +2,26 @@ package com.example.baopengjian.ray_dailywork;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.example.baopengjian.ray_dailywork.eighth.ShrinkViewpagerActivity;
 import com.example.baopengjian.ray_dailywork.tenth.LoadingDialogActivity;
-import com.example.baopengjian.ray_dailywork.fifth.DynamicPermissionRequestActivity;
-import com.example.baopengjian.ray_dailywork.first.AprilActivity;
-import com.example.baopengjian.ray_dailywork.fourth.SeptemberActivity;
-import com.example.baopengjian.ray_dailywork.nineth.StringPickerActivity;
-import com.example.baopengjian.ray_dailywork.second.MayActivity;
-import com.example.baopengjian.ray_dailywork.seventh.SelectedViewActivity;
-import com.example.baopengjian.ray_dailywork.sixth.CalendarActivity;
-import com.example.baopengjian.ray_dailywork.third.JuneActivity;
+import com.example.baopengjian.ray_dailywork.util.CommonAdapter;
+import com.example.baopengjian.ray_dailywork.util.ViewHolder;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    static Class[] TARGETS = {AprilActivity.class, MayActivity.class, JuneActivity.class, SeptemberActivity.class, DynamicPermissionRequestActivity.class, CalendarActivity.class, SelectedViewActivity.class, ShrinkViewpagerActivity.class
-            ,StringPickerActivity.class,LoadingDialogActivity.class};
-    static String[] TARGETS_DESC = {"01\n(自定义阴影、文本部分点击、pdf、新特性阴影)", "02\n（列表横滚、柱状图、viewPagerLazyFragment）",
-            "03\n(按钮切换)", "04\n(Bundle传输数据过大)", "05\n动态权限申请", "06\n日历添删查", "07 选中", "08 ViewPager显示前后两项部分内容","09 String选择器","10 加载Dialog的两种实现方式"};
 
     private Context context;
 
@@ -36,19 +32,44 @@ public class MainActivity extends AppCompatActivity {
 
         context = this;
 
-        ListView lv = (ListView) findViewById(R.id.lv);
-        lv.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, TARGETS_DESC));
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListView lv =  findViewById(R.id.lv);
+        lv.setAdapter(new CommonAdapter<ResolveInfo>(MainActivity.this, queryAppInfo(), android.R.layout.simple_list_item_1) {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(context, TARGETS[position]);
-                startActivity(intent);
+            public void convert(ViewHolder helper, final ResolveInfo item) {
+                ((TextView) helper.getConvertView()).setText(item.activityInfo.loadLabel(getPackageManager()));
+                helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            Intent intent = new Intent(MainActivity.this, Class.forName(item.activityInfo.name));
+                            startActivity(intent);
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         });
+
     }
 
     public void nonstop(View view) {
         startActivity(new Intent(MainActivity.this, LoadingDialogActivity.class));
     }
 
+
+    public List<ResolveInfo> queryAppInfo() {
+        PackageManager manager = getPackageManager();
+        Intent intent = new Intent("com.example.bpj.dailwork");
+        List<ResolveInfo> list = manager.queryIntentActivities(intent, 0);
+        Collections.sort(list, new Comparator<ResolveInfo>() {
+            @Override
+            public int compare(ResolveInfo o1, ResolveInfo o2) {
+                String label1 = String.valueOf(o1.activityInfo.loadLabel(getPackageManager()));
+                String label2 = String.valueOf(o2.activityInfo.loadLabel(getPackageManager()));
+                return label1.compareTo(label2);
+            }
+        });
+        return list;
+    }
 }
