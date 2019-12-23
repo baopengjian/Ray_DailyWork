@@ -22,4 +22,15 @@
     <style name="Widget.EditText.White" parent="@android:style/Widget.EditText">
         <!--   <item name="android:textColor">@color/red</item>-->
     </style>
+
+    <style name="load_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 模糊 -->
+    </style>
 </resources>

@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.baopengjian.ray_dailywork.eighth.ShrinkViewpagerActivity;
+import com.example.baopengjian.ray_dailywork.tenth.LoadingDialogActivity;
 import com.example.baopengjian.ray_dailywork.fifth.DynamicPermissionRequestActivity;
 import com.example.baopengjian.ray_dailywork.first.AprilActivity;
 import com.example.baopengjian.ray_dailywork.fourth.SeptemberActivity;
@@ -21,9 +22,10 @@ import com.example.baopengjian.ray_dailywork.third.JuneActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    static Class[] TARGETS = {AprilActivity.class, MayActivity.class, JuneActivity.class, SeptemberActivity.class, DynamicPermissionRequestActivity.class, CalendarActivity.class, SelectedViewActivity.class, ShrinkViewpagerActivity.class};
+    static Class[] TARGETS = {AprilActivity.class, MayActivity.class, JuneActivity.class, SeptemberActivity.class, DynamicPermissionRequestActivity.class, CalendarActivity.class, SelectedViewActivity.class, ShrinkViewpagerActivity.class
+            ,StringPickerActivity.class,LoadingDialogActivity.class};
     static String[] TARGETS_DESC = {"01\n(自定义阴影、文本部分点击、pdf、新特性阴影)", "02\n（列表横滚、柱状图、viewPagerLazyFragment）",
-            "03\n(按钮切换)", "04\n(Bundle传输数据过大)", "05\n动态权限申请", "06\n日历添删查", "07 选中", "08 ViewPager显示前后两项部分内容"};
+            "03\n(按钮切换)", "04\n(Bundle传输数据过大)", "05\n动态权限申请", "06\n日历添删查", "07 选中", "08 ViewPager显示前后两项部分内容","09 String选择器","10 加载Dialog的两种实现方式"};
 
     private Context context;
 
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void nonstop(View view) {
-        startActivity(new Intent(MainActivity.this, StringPickerActivity.class));
+        startActivity(new Intent(MainActivity.this, LoadingDialogActivity.class));
     }
 
 }

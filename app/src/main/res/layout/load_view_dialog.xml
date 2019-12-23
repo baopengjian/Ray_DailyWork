@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="120dp"
+    android:gravity="center_horizontal"
+    android:minWidth="120dp"
+    android:background="@drawable/load_boder_bagrd"
+    android:orientation="vertical"
+    >
+
+    <com.example.baopengjian.ray_dailywork.tenth.LoadingView
+        android:layout_marginTop="5dp"
+        android:id="@+id/iv_load"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="false"
+        android:gravity="center"
+       />
+    <TextView
+        android:id="@+id/tips_loading_msg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="加载中..."
+        android:textColor="#333333"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:background="@drawable/load_boder"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#DF4242"
+        android:textSize="14sp"
+        android:visibility="visible" />
+</LinearLayout>
+

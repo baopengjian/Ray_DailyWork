@@ -52,6 +52,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.picker"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".tenth.LoadingDialogActivity"
+
+            />
     </application>
 
 </manifest>
