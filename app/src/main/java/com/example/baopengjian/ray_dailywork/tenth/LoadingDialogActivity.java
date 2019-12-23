@@ -33,40 +33,11 @@ public class LoadingDialogActivity extends AppCompatActivity {
 
 
     public void viewDialog(View v) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                LoadViewDialog.showDialog(LoadingDialogActivity.this);
-            }
-        });
-
+        LoadViewDialog.showDialog(LoadingDialogActivity.this);
     }
 
     public void dismiss(View v) {
         SnackLoading.getInstance(this).show();
-        /*runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                LoadingView loadingView;
-                if (view == null) {
-                    view = new RelativeLayout(LoadingDialogActivity.this);
-                    loadingView = new LoadingView(LoadingDialogActivity.this);
-                    view.addView(loadingView, UtilsDensity.dip2px(100), ViewGroup.LayoutParams.WRAP_CONTENT);
-                    view.setGravity(Gravity.CENTER);
-                } else {
-                    loadingView = (LoadingView) view.getChildAt(0);
-                }
-
-
-                if (view.getParent() != null) {
-                    ((ViewGroup) view.getParent()).removeView(view);
-                }
-                ((ViewGroup) (LoadingDialogActivity.this.getWindow().getDecorView())).addView(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                loadingView.startAnimation();
-            }
-        });*/
-
     }
 
-    private RelativeLayout view;
 }

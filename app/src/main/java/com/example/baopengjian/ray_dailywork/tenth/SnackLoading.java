@@ -18,6 +18,7 @@ public class SnackLoading {
     private Activity activity;
     private View mView;
     private LoadingView loadingView;
+    private int referenceTime;
 
     private SnackLoading(Activity activity) {
         this.activity = activity;
@@ -27,12 +28,19 @@ public class SnackLoading {
         mView.findViewById(R.id.tv_cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                referenceTime =0;
                 dismiss();
             }
         });
+        referenceTime = 0;
     }
 
     public void show() {
+        if (snackInstance == null || snackInstance.get() == null) {
+            return;
+        }
+        SnackLoading snackLoading = snackInstance.get();
+        snackLoading.referenceTime++;
         if (mView != null && mView.getVisibility() == View.GONE) {
             mView.setVisibility(View.VISIBLE);
         }
@@ -41,59 +49,49 @@ public class SnackLoading {
     }
 
     public void dismiss() {
-        if (mView != null) {
-            mView.setVisibility(View.GONE);
+        if (snackInstance == null || snackInstance.get() == null) {
+            return;
         }
-        if (loadingView != null) {
-            loadingView.stopAnimation();
+
+        SnackLoading loadDialog = snackInstance.get();
+        if (loadDialog.referenceTime > 0) {
+            loadDialog.referenceTime--;
+        }
+        if (loadDialog.referenceTime == 0) {
+            if (mView != null) {
+                mView.setVisibility(View.GONE);
+            }
+            if (loadingView != null) {
+                loadingView.stopAnimation();
+            }
         }
     }
 
+
     public void clear() {
+        if (loadingView != null) {
+            loadingView.stopAnimation();
+        }
         if (mView != null && mView.getParent() != null) {
             ((ViewGroup) mView.getParent()).removeView(mView);
         }
     }
 
-    public static SnackLoading getInstance(Activity activity) {
-        SnackLoading snackLoading = getCorrectInstance(activity);
-        return snackLoading;
-    }
-
-    private static synchronized SnackLoading getCorrectInstance(Activity context) {
+    public static synchronized SnackLoading getInstance(Activity activity) {
         SnackLoading snackLoading;
         if (snackInstance == null || snackInstance.get() == null) {
-            snackLoading = new SnackLoading(context);
+            snackLoading = new SnackLoading(activity);
             snackInstance = new WeakReference<>(snackLoading);
         } else {
             snackLoading = snackInstance.get();
-            if (snackLoading.activity != context) {
+            if (snackLoading.activity != activity) {
                 snackInstance.clear();
-                snackLoading = new SnackLoading(context);
+                snackLoading = new SnackLoading(activity);
                 snackInstance = new WeakReference<>(snackLoading);
             }
         }
-
         return snackLoading;
     }
 
 
-    /*public static LoadingView make(Activity activity) {
-
-     *//*if (view == null) {
-            view = new RelativeLayout(activity);
-            loadingView = new LoadingView(activity);
-            view.addView(loadingView, UtilsDensity.dip2px(100), ViewGroup.LayoutParams.WRAP_CONTENT);
-            view.setGravity(Gravity.CENTER);
-        } else {
-            loadingView = (LoadingView) view.getChildAt(0);
-        }*//*
-        return null;
-    }
-*/
-
-    public static LoadingView make(ViewGroup viewGroup) {
-
-        return null;
-    }
 }

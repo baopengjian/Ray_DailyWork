@@ -78,7 +78,7 @@ public class LoadViewDialog extends Dialog implements View.OnClickListener {
         tv_cancel.setOnClickListener(this);
     }
 
-    public static WeakReference<LoadViewDialog> dialogReference;
+    private static WeakReference<LoadViewDialog> dialogReference;
 
     /**
      * 只有最新的dialog会显示，后面的会覆盖前面的，自动释放
@@ -91,7 +91,6 @@ public class LoadViewDialog extends Dialog implements View.OnClickListener {
             if (!loadDialog.isShowing()) {
                 loadDialog.show();
             }
-            loadDialog.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

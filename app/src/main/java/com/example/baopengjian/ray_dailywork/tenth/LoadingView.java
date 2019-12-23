@@ -12,6 +12,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
@@ -131,6 +132,9 @@ public class LoadingView extends View {
         recycleBitmap(mBgBitmap);
         recycleBitmap(mBitMapDST);
         recycleBitmap(mBitMapSRC);
+        if(animator != null && animator.isRunning()){
+            animator.cancel();
+        }
     }
 
     private void recycleBitmap(Bitmap bitmap) {
@@ -153,6 +157,7 @@ public class LoadingView extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 dx = (int) animation.getAnimatedValue();
+                Log.i("LoadingViewDialog","animation  dx="+dx );
                 postInvalidate();
             }
         });
