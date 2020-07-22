@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Ray_DailyWork</string>
+    <array name="eleven_array">
+        <item>业务办理</item>
+        <item>行情</item>
+        <item>交易</item>
+        <item>理财</item>
+        <item>智能交易</item>
+        <item>投顾服务</item>
+        <item>数据中心</item>
+        <item> 资讯</item>
+    </array>
 </resources>
