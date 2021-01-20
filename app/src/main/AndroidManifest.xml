@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <meta-data
         android:name="action"
         android:value="com.example.bpj.dailwork" />
@@ -23,6 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:name=".MyApplication"
         tools:ignore="HardcodedDebugMode">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -121,6 +123,13 @@
         <activity
             android:name=".eleventh.ApplyActivity"
             android:label="11 宫格动态配置">
+            <intent-filter>
+                <action android:name="com.example.bpj.dailwork" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".twelfth.FloatingWindowActivity"
+            android:label="13 悬浮窗口">
             <intent-filter>
                 <action android:name="com.example.bpj.dailwork" />
             </intent-filter>

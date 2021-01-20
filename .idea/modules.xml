@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidStudioProjects-Ray_DailyWork.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidStudioProjects-Ray_DailyWork.iml" group="Ray_DailyWork" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Ray_DailyWork.iml" filepath="$PROJECT_DIR$/.idea/Ray_DailyWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Ray_DailyWork-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Ray_DailyWork-app.iml" group="Ray_DailyWork/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
