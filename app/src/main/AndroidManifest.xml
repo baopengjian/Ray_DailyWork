@@ -128,8 +128,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".twelfth.FloatingWindowActivity"
-            android:label="13 悬浮窗口">
+            android:name=".fifteenth.FloatingWindowActivity"
+            android:label="15 悬浮窗口">
             <intent-filter>
                 <action android:name="com.example.bpj.dailwork" />
             </intent-filter>
