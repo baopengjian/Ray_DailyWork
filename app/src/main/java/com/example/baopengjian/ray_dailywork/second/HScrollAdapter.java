@@ -6,6 +6,7 @@ import android.support.v4.widget.ScrollerCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.OverScroller;
 import android.widget.TextView;
 
 import com.example.baopengjian.ray_dailywork.R;
@@ -19,13 +20,13 @@ public class HScrollAdapter extends BaseAdapter {
 
     private int scrollXPos;
     private Context mContext;
-    private ScrollerCompat mScrollerCompat;
+    private OverScroller mScrollerCompat;
 
     public HScrollAdapter(Context context) {
         mContext = context;
     }
 
-    public void setScroller(ScrollerCompat scroller) {
+    public void setScroller(OverScroller scroller) {
         mScrollerCompat = scroller;
     }
 

@@ -109,11 +109,6 @@ public class HSListView extends ListView {
             case MotionEvent.ACTION_DOWN:
                 return super.onInterceptTouchEvent(ev);
             case MotionEvent.ACTION_MOVE:
-                if (isSliding && !isPulling) {
-                    return true;
-                } else {
-                    return super.onInterceptTouchEvent(ev);
-                }
             case MotionEvent.ACTION_UP:
                 if (isSliding && !isPulling) {
                     return true;
@@ -152,8 +147,8 @@ public class HSListView extends ListView {
 
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_OUTSIDE:
-                if (mListener != null && isSliding && xDown > 0 ) {
-                    mListener.onFling(0, 0, -getScrollVelocity() * 2 / 3, 0, 0, 0, 0, 0, REBOUND_DISTANCE_X, 0);
+               if (mListener != null && isSliding && xDown > 0 ) {
+                    mListener.onFling(0, 0, getScrollVelocity() * 2 / 3, 0, 0, 0, 0, 0, REBOUND_DISTANCE_X, 0);
                     isSliding = false;
                     isPulling = false;
                     recycleVelocityTracker();

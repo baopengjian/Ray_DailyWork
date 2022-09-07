@@ -4,7 +4,9 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.ScrollerCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.LinearLayout;
+import android.widget.OverScroller;
 
 /**
  * Created by Ray on 2018/5/10.
@@ -13,7 +15,7 @@ import android.widget.LinearLayout;
 
 public class HScrollLayout extends LinearLayout {
 
-    private ScrollerCompat mScrollerCompat;
+    private OverScroller mScrollerCompat;
 
     public HScrollLayout(Context context) {
         super(context);
@@ -29,14 +31,14 @@ public class HScrollLayout extends LinearLayout {
 
     @Override
     public void computeScroll() {
-        super.computeScroll();
         if (mScrollerCompat != null && mScrollerCompat.computeScrollOffset()) {
+            Log.e("HScrollLayout",">>> "+mScrollerCompat.getCurrX());
             scrollTo(mScrollerCompat.getCurrX(), 0);
-            postInvalidate();
+            invalidate();
         }
     }
 
-    public void setScroller(ScrollerCompat scroller) {
+    public void setScroller(OverScroller scroller) {
         mScrollerCompat = scroller;
     }
 }
