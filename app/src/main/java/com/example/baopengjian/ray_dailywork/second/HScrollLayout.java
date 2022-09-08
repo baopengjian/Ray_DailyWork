@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.OverScroller;
+import android.widget.Scroller;
 
 /**
  * Created by Ray on 2018/5/10.
@@ -15,7 +16,7 @@ import android.widget.OverScroller;
 
 public class HScrollLayout extends LinearLayout {
 
-    private OverScroller mScrollerCompat;
+    private Scroller mScrollerCompat;
 
     public HScrollLayout(Context context) {
         super(context);
@@ -38,7 +39,7 @@ public class HScrollLayout extends LinearLayout {
         }
     }
 
-    public void setScroller(OverScroller scroller) {
+    public void setScroller(Scroller scroller) {
         mScrollerCompat = scroller;
     }
 }
